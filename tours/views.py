@@ -8,7 +8,6 @@ from .data.data import tours, departures, description, subtitle, title
 
 def main_view(request):
     random_tours = random.sample(list(tours.items()), k=6, )
-    print(random_tours)
 
     context = {
         'title': title,
@@ -44,10 +43,10 @@ def departure_view(request, departure):
     return render(request, template_name='tours/departure.html', context=context)
 
 
-def tour_view(request, id):
-    if id not in tours.keys():
+def tour_view(request, pk):
+    if pk not in tours.keys():
         raise Http404
-    tour = tours.get(id)
+    tour = tours.get(pk)
     context = {
         'title': title,
         'departures': departures,
