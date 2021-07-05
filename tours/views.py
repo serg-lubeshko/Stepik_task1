@@ -3,6 +3,7 @@ import random
 from django.http import Http404
 from django.shortcuts import render
 
+from .utils import change_ending_word
 from .data.data import tours, departures, description, subtitle, title
 
 
@@ -38,7 +39,8 @@ def departure_view(request, departure):
         'max_price': max_price,
         'min_price': min_price,
         'max_nights': max_nights,
-        'min_nights': min_nights
+        'min_nights': min_nights,
+        'ending_word_tour': change_ending_word(count_tours)
     }
     return render(request, template_name='tours/departure.html', context=context)
 
