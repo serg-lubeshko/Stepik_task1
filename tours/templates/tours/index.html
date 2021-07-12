@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load ru_pluralize %}
 <body>
 {% block content %}
     <main class="container mt-3">
@@ -20,6 +21,10 @@
                         <div class="card-body">
                             <h2 class="h5 card-title">{{ values.title }}</h2>
                             <p class="card-text">{{ values.description }}</p>
+                            <p><b>{{ values.date }}, {{ values.nights|add:1|ru_pluralize }}, {{ values.price }}
+                                RUB, {{ values.stars }}
+                                ★ </b>
+                            </p>
                             <a href="{% url 'tour' key %}" class="btn btn-sm btn-primary">Подробнее</a>
                         </div>
                     </div>
